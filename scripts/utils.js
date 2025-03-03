@@ -55,11 +55,11 @@ function displayErrorMessage(message) {
 }
 
 function checkUserExist() {
-   const hash = window.location.hash;
+   const hash = window.location.hash.toLowerCase();
    const user = getUserStorage();
 
    if (!user) {
-      if (!hash || hash !== 'home') {
+      if (hash !== '#home') {
          window.location.pathname = '/';
       } else {
          const dialog = document.getElementById('user-modal-registration');
