@@ -213,33 +213,10 @@ function dialogUserInput() {
    })
 }
 
-function fetchConfig() {
-   return new Promise((resolve, reject) => {
-      fetch('/firebase.config.json')
-      .then((res) => {
-         return res.json();
-      })
-      .then((data)=> {
-         firebaseConfig = Object.assign(firebaseConfig, data);
-         resolve();
-      })
-      .catch((e)=>{
-         console.error(e);
-         reject(e);
-      })
-   })
-}
-
-
 window.addEventListener('load', function() {
    this.location.hash = hashLocation;
-
-   fetchConfig()
-   .then(() => {
-      checkUserExist();
-      register();
-      login();
-      gameLastLocation = isGameLastLocation();
-   })
-
+   checkUserExist();
+   register();
+   login();
+   gameLastLocation = isGameLastLocation();
 })
