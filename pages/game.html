@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="/styles/game.css">
+   <link rel="preload" href="/images/webp/background/BG-1366x768.webp" as="image" data-img="BG-1366x768"/>
+   <link rel="preload" href="/fonts/Inter-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous" data-font="font-inter"/>
+
+   <title>FLAPPY FACE | Game</title>
+</head>
+<body>
+   <main >
+      <section class="game-content">
+         <div class="display-score">
+            Score: <span id="current-display-score">0</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            Highest Score: <span id="highest-display-score">0</span>
+         </div>
+
+         <div id="canva-wrapper">
+            <video autoplay="true" id="videoElement"></video>
+            <canvas id="gameCanvas"></canvas>
+         </div>
+
+         <div class="count-3-2-1">
+            <span id="count">3</span>
+         </div>
+      </section>
+
+      <section>
+         <dialog id="user-modal-start-game" class="popup">
+            <div id="character-select">
+               <div class="sub-headers">Character Selected</div>
+               <br>
+               <div class="character-info">
+                  <div class="character-info__displayed">
+                     <img src="/images/characters/webp/bird.webp" alt="character" id="character-img">
+                     <span id="character-name">Name</span>
+                  </div>
+                  <div>
+                     <button class="go-to-menu"><a href="/pages/menu.html">Select other character</a></button>
+                  </div>
+               </div>
+
+               <div>
+                  <p id="character-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quam aperiam doloribus. Officia sequi accusamus cupiditate repellendus, iusto architecto distinctio.</p>
+               </div>
+            </div>
+
+            <div class="start-dialog__button">
+               <button id="play-btn">Play</button>
+               <button id="exit-btn"><a href="/">Exit</a></button>
+            </div>
+         </dialog>
+      </section>
+   </main>
+   <script src="/constant//charaters.js"></script>
+   <script src="/constant/keys.js"></script>
+   <script src="/scripts/utils.js"></script>
+   <script src="/scripts/face-api.min.js"></script>
+   <script src="/scripts/game.js"></script>
+</body>
+</html>

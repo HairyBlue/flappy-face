@@ -1,0 +1,207 @@
+@import 'base.css';
+
+main {
+   background-image: url("/images/webp/background/BG-1366x768.webp");
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   height: 100dvh;
+   overflow-y: scroll;
+   position: relative;
+}
+
+a {
+   text-decoration: none;
+   color: black;
+}
+
+.game-content {
+   width: 90%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   /* justify-content: center; */
+   align-items: center;
+   margin: 0 auto;
+   gap: 16px;
+   padding: 24px;
+   /* border: 1px solid black; */
+}
+
+.popup {
+   position: fixed;
+   inset: 0;
+   margin: auto;
+   padding: 1rem;
+   border: none;
+   border-radius: 8px;
+   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+   background: white;
+   max-width: 500px;
+}
+
+
+/* ************************************************************************* */
+.sub-headers {
+   font-size: 1.2em;
+   font-weight: 900;
+}
+
+.character-choosed {
+   padding: 8px;
+   border: 1px solid black;
+}
+
+.character-info {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.character-info__displayed {
+   display: flex;
+   align-items: center;
+   gap: 12px;
+}
+.character-info__displayed span {
+   font-size: 1.5em;
+   font-weight: 900;
+}
+
+.character-info img {
+   width: 72px;
+   height:  72px;
+   border-radius: 50%;
+   box-shadow: 0 2px 2px 1px black;
+}
+
+#character-description {
+ margin-top: 8px;
+}
+.go-to-menu {
+   font-size: .8em;
+   font-weight: 900;
+   width: 140px;
+   height: 48px;
+   border-radius: 12px;
+   background-color: #8dcefd;
+   border: 4px solid #0e79aa;
+}
+/* ************************************************************************* */
+
+
+
+/* ************************************************************************* */
+
+.start-dialog__button {
+   margin-top: 12px;
+   display: flex;
+   justify-content: space-evenly;
+}
+
+.start-dialog__button button {
+   font-size: 1.5em;
+   font-weight: 900;
+   width: 140px;
+   height: 48px;
+   border-radius: 12px;
+}
+
+#play-btn {
+   background-color: #B8FD8D;
+   border: 4px solid #2A9C07;
+}
+
+#exit-btn {
+   background-color: #ead394;
+   border: 4px solid #cba715;
+}
+
+/* ************************************************************************* */
+
+
+/* ************************************************************************* */
+.display-score {
+   font-size: 1.5em;
+   font-weight: 500;
+}
+.display-score span {
+   font-weight: 900;
+}
+/* ************************************************************************* */
+
+
+
+/* ************************************************************************* */
+.count-3-2-1 {
+   position: absolute;
+   top: 150px;
+   z-index: 2;
+   font-size: 12em;
+   font-weight: 900;
+   display: none;
+}
+
+#canva-wrapper {
+   width: 100%;
+   height: 100%;
+   position: relative;
+   border: 4px solid gray;
+}
+
+#videoElement {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover; /* Makes sure the video covers the whole screen */
+   z-index: 2; /* Sends the video to the background */
+   /* border: 1px solid black; */
+   /* margin: auto; */
+   /* background-color: green; */
+}
+
+#gameCanvas {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 3; /* Ensures the game is drawn on top */
+   /* border: 1px solid rgb(155, 0, 0); */
+   /* background-color: red; */
+}
+
+/* ************************************************************************* */
+
+@media (max-width: 1280px) {
+
+}
+
+@media screen and (max-width: 768px) { 
+
+}
+@media screen and (max-width: 480px) {
+   .game-content {
+      width: 98%;
+      padding: 8px;
+   }
+
+   .go-to-menu {
+      margin-top: 8px;
+   }
+   .sub-headers {
+      text-align: center;
+   }
+   .character-info {
+      flex-direction: column;
+      gap: 12px;
+   }
+
+   #character-description {
+      text-align: center;
+   }
+
+
+}
