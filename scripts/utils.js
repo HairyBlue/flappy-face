@@ -71,13 +71,26 @@ function checkUserExist() {
 
 
 function isGameLastLocation() {
+   const hashLocation = window.location.hash.toLowerCase();
+
    const lastLocation = this.sessionStorage.getItem(SS_USER_LAST_LOCATION);
    
    if (lastLocation && lastLocation == 'game') {
-      this.sessionStorage.removeItem(SS_USER_LAST_LOCATION);
-
+      if (hashLocation === "#home") {
+         this.sessionStorage.removeItem(SS_USER_LAST_LOCATION);
+      }
+      
       return true;
    }
 
    return false;
+}
+
+
+function logout() {
+   localStorage.removeItem(LS_USER_KEY);
+   localStorage.removeItem(LS_USER_SCORE_KEY);
+   localStorage.removeItem(LS_USER_CHARACTER);
+
+   window.location.href = '/';
 }

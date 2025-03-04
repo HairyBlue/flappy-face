@@ -19,6 +19,7 @@ const PLAY_TIME_DIPLAY = "play-time-display";
 // ALL aside mobile
 const CHARACTER_IMG = "character-img";
 const CHARACTER_NAME = "character-name";
+const CHARACTER_LIVES = "character-lives";
 const CHARACTER_DESCRIPTION = "character-description";
 const CHARACTERS_LIST = "characters-list";
 
@@ -30,6 +31,7 @@ const USE_BUTTON = "used-btn";
 // MOBILE - need separate ids for other mobile display
 const CHARACTER_IMG_MOBILE = "character-img-mobile";
 const CHARACTER_NAME_MOBILE = "character-name-mobile";
+const CHARACTER_LIVES_MOBILE = "character-lives-mobile";
 const CHARACTER_DESCRIPTION_MOBILE = "character-description-mobile";
 const CHARACTERS_LIST_MOBILE = "characters-list-mobile";
 

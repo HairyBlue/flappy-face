@@ -6,6 +6,9 @@ let characterId = null;
 let triggerSelected = "";
 
 
+let user = null;
+let userScore = null;
+
 function displaySelectedCharacter(onload=true) {
    if (onload) {
       characterId = getCharacterChooseStorage();
@@ -24,10 +27,12 @@ function displaySelectedCharacter(onload=true) {
    if (character) {
       document.getElementById(CHARACTER_IMG).src = character.imgPath;
       document.getElementById(CHARACTER_NAME).textContent = character.name;
+      document.getElementById(CHARACTER_LIVES).textContent = 'Lives: ' + character.lives;
       document.getElementById(CHARACTER_DESCRIPTION).textContent = character.description;
 
       document.getElementById(CHARACTER_IMG_MOBILE).src = character.imgPath;
       document.getElementById(CHARACTER_NAME_MOBILE).textContent = character.name;
+      document.getElementById(CHARACTER_LIVES_MOBILE).textContent = 'Lives: ' + character.lives;
       document.getElementById(CHARACTER_DESCRIPTION_MOBILE).textContent = character.description;
 
       document.getElementById(CHARACTER_NO_SELECT).style.display = 'none';
@@ -35,6 +40,24 @@ function displaySelectedCharacter(onload=true) {
 
       document.getElementById(CHARACTER_NO_SELECT_MOBILE).style.display = 'none';
       document.getElementById(CHARACTER_SELECT_MOBILE).style.display = 'block';
+      const crowns = document.querySelectorAll('.crown');
+      const editions = document.querySelectorAll('.edition');
+
+      for (let crown of crowns) {
+         if (character.crown) {
+            crown.style.display = 'block'
+         } else {
+            crown.style.display = 'none'
+         }
+      }
+      
+      for (let edition of editions) {
+         if (character.limitedEdition) {
+            edition.style.display = 'flex'
+         } else {
+            edition.style.display = 'none'
+         }
+      }
 
       if (characterId !== character.id) {
          document.getElementById(IN_USED_BUTTON).style.display = 'none';
@@ -52,29 +75,22 @@ function displaySelectedCharacter(onload=true) {
 
       if (triggerSelected.toLowerCase().trim() === "use") {
          localStorage.setItem(LS_USER_CHARACTER, character.id);
-         document.getElementById(IN_USED_BUTTON).style.display = 'block';
-         document.getElementById(IN_USED_BUTTON_MOBILE).style.display = 'block';
-
-         document.getElementById(USE_BUTTON).style.display = 'none';
-         document.getElementById(USE_BUTTON_MOBILE).style.display = 'none';
+         window.location.reload();
       }
    }
 
 }
 
 function displayUserProfile() {
-   const user = getUserStorage();
-   const parsed = JSON.parse(user);
-   
    if (user) {
+      const parsed = JSON.parse(user);
       document.getElementById(USERNAME_ID).textContent = parsed.username;
    }
 }
 
 function loadScore() {
-   const score = getUserScoresStorage();
-   if (score) {
-      const parsedScore = JSON.parse(score);
+   if (userScore) {
+      const parsedScore = JSON.parse(userScore);
       document.getElementById('current-display-score').textContent = parsedScore.currentScore;
       document.getElementById('highest-display-score').textContent = parsedScore.highestScore;
       document.getElementById('play-time-display').textContent = parsedScore.playTime.toFixed(2);
@@ -143,15 +159,70 @@ function characterList() {
    })
 }
 
+function syncUserScoreFirebase() {
+   document.getElementById('sync-score').addEventListener('click', function() {
+      const parseUser = JSON.parse(user);
+      const parseUserScore = JSON.parse(userScore);
+
+      const uuid = parseUser.uuid;
+
+      db.collection(FLAPPY_SCORES_COLLECTION).doc(uuid)
+      .update({
+         currentScore: parseUserScore.currentScore,
+         highestScore: parseUserScore.highestScore,
+         playTime: parseUserScore.playTime,
+      })
+      .then(() => {
+         window.location.reload();
+      })
+   })
+}
+
+function getUserScoreFirebase() {
+   if (user && userScore) {
+      const userParsed = JSON.parse(user);
+      const userScoreParsed = JSON.parse(userScore);
+
+      const uuid = userParsed.uuid;
+      if (uuid) {
+         db.collection(FLAPPY_SCORES_COLLECTION).doc(uuid).get()
+         .then((doc) => {
+            const data = doc.data();
+
+            let syncFirebaseScore = false;
+
+            if (userScoreParsed.highestScore > data.highestScore) {
+               syncFirebaseScore = true
+            } else if (userScoreParsed.playTime > data.playTime) {
+               syncFirebaseScore = true
+            }
+
+            if (syncFirebaseScore) {
+               document.getElementById('sync-score').style.display = 'block';
+               syncUserScoreFirebase();
+            }
+ 
+         })
+      }
+   }
+   
+}
+
+function loadStorage() {
+   user = getUserStorage();
+   userScore = getUserScoresStorage();
+}
 
 function boot() {
-   displayUserProfile();
+   loadStorage();
    loadScore();
+   displayUserProfile();
    displaySelectedCharacter();
    displayListCharacters();
    characterList();
-   gameLastLocation = isGameLastLocation();
+   getUserScoreFirebase();
 
+   gameLastLocation = isGameLastLocation();
    if (gameLastLocation) {
       document.getElementById('go-to-game').style.display = 'block';
    }
@@ -163,4 +234,8 @@ window.addEventListener('load', function() {
    this.location.hash = hashLocation;
    checkUserExist();
    boot();
+
+   this.document.getElementById('logout-to-game').addEventListener('click', function () {
+      logout();
+   })
 })

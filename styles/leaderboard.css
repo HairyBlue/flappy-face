@@ -1,0 +1,157 @@
+@import 'base.css';
+
+main {
+   background-image: url("/images/webp/background/Leadership Board-1366x768.webp");
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   height: 100dvh;
+   overflow-y: scroll;
+}
+
+.main-content {
+   width: 60%;
+   height: 100%;
+   margin: 0 auto;
+   /* border: 1px solid black; */
+}
+
+h1 {
+   font-size: 4em;
+   font-weight: 900;
+   color: #fff;
+   text-shadow: 4px 4px 4px rgba(0, 0, 0, 1);
+   text-align: center;
+   padding: 8px 0;
+}
+
+
+.display-current-user {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-top: 8px;
+   border: 3px solid black;
+   padding: 8px;
+   background-color: #ffffff8a;
+   border-radius: 10px;
+}
+
+.display-current-user .current-user-info {
+   display: flex;
+   align-items: center;
+   gap: 12px;
+}
+
+.display-current-user img {
+   width: 56px;
+   height: 56px;
+   border-radius: 50%;
+   box-shadow: 0 2px 2px .5px black;
+}
+
+.display-current-user span {
+   font-size: 2em;
+   font-weight: 900;
+}
+
+.rank, .score {
+   text-align: center;
+   border: 1px solid black;
+   width: fit-content;
+   padding: 0 8px;
+   border-radius: 4px;
+}
+
+.rank .sub-header, .score .sub-header {
+   color: #fe290d;
+   text-shadow: 2px 2px 2px rgb(249, 249, 249);
+   font-size: 15px;
+}
+
+
+ul {
+   list-style-type: none;
+}
+
+ul .display-current-user {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-top: 8px;
+   border: 3px solid black;
+   padding: 8px;
+   background-color: #ffffff8a;
+   border-radius: 10px;
+}
+
+ul .current-user-info {
+   display: flex;
+   align-items: center;
+   gap: 12px;
+}
+
+ul .current-user-info  img {
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   box-shadow: 0 2px 2px .5px black;
+}
+
+ul .display-current-user span {
+   font-size: 2em;
+   font-weight: 900;
+}
+
+.rank-score-list {
+   display: flex;
+   gap: 12px;
+}
+
+ul .rank, ul .score {
+   text-align: center;
+   border: 1px solid black;
+   width: fit-content;
+   padding: 0 8px;
+   border-radius: 4px;
+}
+
+ul .rank .sub-header, ul .score .sub-header {
+   color: #fe290d;
+   text-shadow: 2px 2px 2px rgb(249, 249, 249);
+   font-size: 15px;
+}
+
+.ribbon {
+   box-shadow: none !important;
+}
+
+.exit {
+   margin-top: 8px;
+   font-size: 1.5em;
+}
+
+
+@media screen and (max-width: 768px) {
+   .main-content {
+      width: 80%;
+   }
+
+   .current-user-info, .display-current-user {
+      flex-direction: column;   
+   }
+}
+@media screen and (max-width: 480px) {
+   .main-content {
+      width: 90%;
+   }
+
+   h1 {
+      font-size: 3.5em;
+   }
+   .current-user-info,  .display-current-user {
+      flex-direction: column;   
+   }
+
+
+}

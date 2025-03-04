@@ -107,6 +107,7 @@ section > div {
    display: flex;
    justify-content: space-between;
    align-items: center;
+   position: relative;
 }
 
 .character-info__displayed {
@@ -126,12 +127,36 @@ section > div {
    box-shadow: 0 2px 2px 1px black;
 }
 
+.spec{
+   display: flex;
+   position: absolute;
+   top: -10px;
+   left: 40px;
+   gap: 32px;
+}
+
+.crown {
+   transform: skewX(-20deg);
+}
+
+.edition {
+   display: flex;
+   align-items: center;
+   font-style: italic;
+   color: #A87E00;
+   margin-left: -24px;
+   width: fit-content;
+}
+
+.edition span {
+   padding-bottom: 18px;
+}
 #characters-list, #characters-list-mobile {
    margin-top: 24px;
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
-   gap: 24px;
+   gap: 12px;
 }
 
 #characters-list img, #characters-list-mobile img{
@@ -144,13 +169,17 @@ section > div {
 #used-btn,
 #in-use-btn,
 #used-btn-mobile,
-#in-use-btn-mobile 
+#in-use-btn-mobile,
+#sync-score
 {
    font-size: 1.5em;
    font-weight: 900;
    width: 96px;
    height: 48px;
    border-radius: 12px;
+   width: fit-content;
+   text-wrap: nowrap;
+   padding: 0 .4rem;
 }
 
 
@@ -168,7 +197,6 @@ section > div {
 #btn-stuff button {
    font-size: 1.5em;
    font-weight: 900;
-   width: fit-content;
    height: 48px;
    border-radius: 12px;
 }
@@ -182,6 +210,15 @@ section > div {
    background-color: #B8FD8D;
    border: 4px solid #2A9C07;
 }
+#sync-score {
+   background-color: #8dcbfd;
+   border: 4px solid #06588e;
+   display: none;
+}
+#logout-to-game {
+   background-color: #fd948d;
+   border: 4px solid #b41a1a;
+}
 
 #go-to-game {
    display: none;
@@ -190,7 +227,9 @@ section > div {
 /* ************************************************************************* */
 
 
-
+.crown, .edition {
+   display: none;
+}
 
 @media (max-width: 1280px) {
    .menu-content {
@@ -214,6 +253,10 @@ section > div {
    }
 
 /* ************************************************************************* */
+
+   .character-info__displayed span {
+      font-size: 1.2em;
+   }
 }
 
 @media screen and (max-width: 768px) {
@@ -232,7 +275,9 @@ section > div {
    #game-characters-mobile {
       display: block;
    }
-
+   .character-info__displayed span {
+      font-size: 1em;
+   }
 }
 
 @media screen and (max-width: 480px) {
@@ -291,5 +336,20 @@ section > div {
       height: 56px;
       border-radius: 50%;
       box-shadow: 0 2px 2px 1px black;
+   }
+   .character-info__displayed span {
+      font-size: .9em;
+   }
+
+   .spec{
+      left: 86px;
+   }
+   
+}
+
+
+@media screen and (max-width: 380px) {
+   .spec{
+      left: 56px;
    }
 }

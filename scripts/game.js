@@ -191,7 +191,7 @@ function gameUpdate() {
 
             if (pipeScoreHits <= pipeCollision) {
                gamePause = true;
-
+               console.log(parsedScore)
                if (parsedScore) {
                   if (playerScore % 1 != 0) {
                      playerScore = Math.round(playerScore);

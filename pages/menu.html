@@ -36,10 +36,12 @@
                <span class="sub-headers">Game Score and overall playtime</span>
                <br>
                Current Score: <span id="current-display-score">0</span>
-               &nbsp;&nbsp;
+               |
                Highest Score: <span id="highest-display-score">0</span>
-               &nbsp;&nbsp;
+               |
                Overall Playtime: <span id="play-time-display">0</span>hrs
+              
+               <button id="sync-score">Sync Online</button>
             </div>
 
 
@@ -55,13 +57,25 @@
                         <div class="character-info__displayed">
                            <img src="/images/characters/webp/bird.webp" alt="character" id="character-img-mobile">
                            <span id="character-name-mobile">Name</span>
+                           |
+                           <span id="character-lives-mobile">Lives: 1</span>
                         </div>
                         <div>
                            <button id="in-use-btn-mobile">In Use</button>
                            <button id="used-btn-mobile">Use</button>
                         </div>
+
+                        <div class="spec">
+                           <div class="crown">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#F5C536" d="M5 20v-2h14v2zm0-3.5L3.725 8.475q-.05 0-.113.013T3.5 8.5q-.625 0-1.062-.438T2 7t.438-1.062T3.5 5.5t1.063.438T5 7q0 .175-.038.325t-.087.275L8 9l3.125-4.275q-.275-.2-.45-.525t-.175-.7q0-.625.438-1.063T12 2t1.063.438T13.5 3.5q0 .375-.175.7t-.45.525L16 9l3.125-1.4q-.05-.125-.088-.275T19 7q0-.625.438-1.063T20.5 5.5t1.063.438T22 7t-.437 1.063T20.5 8.5q-.05 0-.112-.012t-.113-.013L19 16.5z"/></svg>
+                           </div>
+                           <div class="edition">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#F5C536" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+                              <div>limited edition</div>
+                           </div>
+                        </div>
                      </div>
-   
+                     <br>
                      <div>
                         <p id="character-description-mobile">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quam aperiam doloribus. Officia sequi accusamus cupiditate repellendus, iusto architecto distinctio.</p>
                      </div>
@@ -92,6 +106,7 @@
             <div id="btn-stuff">
                <button id="go-to-home"><a href="/">Go to home</a></button>
                <button id="go-to-game"><a href="/pages/game.html#game">Return to game</a></button>
+               <button id="logout-to-game">Logout</button>
             </div>
          </section>
 
@@ -110,17 +125,27 @@
                         <div class="character-info__displayed">
                            <img src="/images/characters/webp/bird.webp" alt="character" id="character-img">
                            <span id="character-name">Name</span>
+                           |
+                           <span id="character-lives">Lives: 1</span>
                         </div>
                         <div>
                            <button id="in-use-btn">In Use</button>
                            <button id="used-btn">Use</button>
                         </div>
+                        <div class="spec">
+                           <div class="crown">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#F5C536" d="M5 20v-2h14v2zm0-3.5L3.725 8.475q-.05 0-.113.013T3.5 8.5q-.625 0-1.062-.438T2 7t.438-1.062T3.5 5.5t1.063.438T5 7q0 .175-.038.325t-.087.275L8 9l3.125-4.275q-.275-.2-.45-.525t-.175-.7q0-.625.438-1.063T12 2t1.063.438T13.5 3.5q0 .375-.175.7t-.45.525L16 9l3.125-1.4q-.05-.125-.088-.275T19 7q0-.625.438-1.063T20.5 5.5t1.063.438T22 7t-.437 1.063T20.5 8.5q-.05 0-.112-.012t-.113-.013L19 16.5z"/></svg>
+                           </div>
+                           <div class="edition">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#F5C536" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+                              <div>limited edition</div>
+                           </div>
+                        </div>
                      </div>
-   
+                     <br>
                      <div>
                         <p id="character-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quam aperiam doloribus. Officia sequi accusamus cupiditate repellendus, iusto architecto distinctio.</p>
                      </div>
-                     
                   </div>
 
                </div>

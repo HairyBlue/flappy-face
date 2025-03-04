@@ -188,8 +188,18 @@ function login() {
       const errorMessage = 'Invalid credentials';
       getUserFirestore('LOGIN', errorMessage)
       .then(data => {
-         localStorage.setItem(LS_USER_KEY, JSON.stringify(data));
-         window.location.reload();
+         db.collection(FLAPPY_SCORES_COLLECTION).doc(data.uuid).get()
+         .then((doc) => {
+            const scoredata = doc.data();
+            localStorage.setItem(LS_USER_CHARACTER, DEFUALT_CHARACTER);
+
+            localStorage.setItem(LS_USER_KEY, JSON.stringify(data));
+            localStorage.setItem(LS_USER_SCORE_KEY, JSON.stringify(scoredata));
+            window.location.reload();
+         })
+         .catch(e => {
+            console.loge(e);
+         })
       })
       .catch((e)=> {
          console.log(e);
